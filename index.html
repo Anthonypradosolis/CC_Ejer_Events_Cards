@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Eventos</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Eventos</h1>
+      <p class="lead">Próximos eventos — cargados desde <code>datos.json</code> vía la API</p>
+    </header>
+
+    <main>
+      <div class="cards-container">
+        <!-- Mensaje de carga; será reemplazado por script.js -->
+        <div class="loading">Cargando eventos...</div>
+      </div>
+      <noscript>
+        <p class="no-js">Necesitas activar JavaScript para ver los eventos. De lo contrario, puedes abrir <code>datos.json</code> manualmente.</p>
+      </noscript>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
