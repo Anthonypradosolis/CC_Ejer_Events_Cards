@@ -63,6 +63,23 @@ body {
 .animals {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
+.music {
+  background: linear-gradient(135deg, #3bb3b3 0%, #764ba2 100%);
+}
+.tech {
+  background: linear-gradient(135deg, #3e14d4 0%, #764ba2 100%);
+}
+.art {
+  background: linear-gradient(135deg, #c4862a 0%, #764ba2 100%);
+}
+.sports{
+  background: linear-gradient(135deg, #d1c842 0%, #764ba2 100%);
+
+}
+.entertainment{
+  background: linear-gradient(135deg, #be1a8d 0%, #764ba2 100%);
+
+}
 
 .event-date {
   display: flex;

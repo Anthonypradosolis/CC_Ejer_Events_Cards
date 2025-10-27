@@ -1,5 +1,4 @@
 
-// script.js - fetch events from /api/events and render cards with a countdown
 document.addEventListener("DOMContentLoaded", () => {
   fetchEventsAndRender();
 });
@@ -122,6 +121,12 @@ function formatEventDate(iso) {
 }
 
 function startCountdown(targetDate, valueEls) {
+  // Si la fecha objetivo no es válida, mostrar guiones y no iniciar el intervalo
+  if (!(targetDate instanceof Date) || isNaN(targetDate.getTime())) {
+    valueEls.forEach((el) => (el.textContent = "--"));
+    return;
+  }
+
   function update() {
     const now = new Date();
     let diff = targetDate - now;
@@ -147,6 +152,7 @@ function startCountdown(targetDate, valueEls) {
     valueEls[3].textContent = String(seconds).padStart(2, "0");
   }
 
+  let iv = null;
   update();
-  const iv = setInterval(update, 1000);
+  iv = setInterval(update, 1000);
 }
