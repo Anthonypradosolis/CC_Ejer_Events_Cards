@@ -26,3 +26,16 @@
 - Puedo mostrar una tarea por id?
 
 3. Realizar un fetch a nuestra API desde JS para poder reflejar los datos de alguna tarea en nuestro diseño de cartas (parecido a la llamada que hicimos en la PokeAPI)
+
+## Requisitos eventos
+
+- Debemos tener al menos 3 categorías distintas.
+- Al menos un evento debe de tener una fecha vencida.
+- Debemos de estilar de forma distinta los eventos futuros y pasados.
+
+## Ideas Ampliación
+
+- Crear un pequeño proyecto paralelo dirigido a los administradores de la web de eventos, permitiéndoles subir nuevos eventos, modificar los eventos existentes o borrar eventos con poca relevancia.
+- La idea es generar formularios HTML5 + llamadas a la API mediante JS usando los verbos HTTP -> POST, DELETE, PATCH...
+- Guardar (usando localStorage) una lista de eventos cacheados.
+- Implementar en el lado servidor (API REST con Express) la creación de una cookie que tiene el nombre de tu usuarie. Crea una pequeña función en el cliente que realice un console.log mostrando el nombre de usuarie.
