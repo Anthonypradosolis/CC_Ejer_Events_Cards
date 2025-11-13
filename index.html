@@ -20,7 +20,9 @@
         <p class="no-js">Necesitas activar JavaScript para ver los eventos. De lo contrario, puedes abrir <code>datos.json</code> manualmente.</p>
       </noscript>
     </main>
-
+    <!--antes me daba error tenia que cambiar el import a index para que funcione -->
+    <!--al estar en umd queda expuesto a mi script -->
+    <script src="https://unpkg.com/@js-temporal/polyfill/dist/index.umd.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

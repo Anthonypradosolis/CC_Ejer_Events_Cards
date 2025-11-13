@@ -1,5 +1,3 @@
-import { Temporal } from "https://esm.sh/@js-temporal/polyfill";
-
 document.addEventListener("DOMContentLoaded", () => {
   fetchEventsAndRender();
 });
