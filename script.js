@@ -1,3 +1,4 @@
+import { Temporal } from "https://esm.sh/@js-temporal/polyfill";
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchEventsAndRender();
@@ -104,15 +105,12 @@ function capitalize(s) {
 
 function parseDate(iso) {
   try {
-    // Temporal API fallback
     if (typeof Temporal !== "undefined" && Temporal.PlainDateTime) {
-      // Temporal parsing expects no Z for PlainDateTime; if Z present, use Instant -> ZonedDateTime
       try {
         const inst = Temporal.Instant.from(iso);
         const zdt = inst.toZonedDateTimeISO(Intl.DateTimeFormat().resolvedOptions().timeZone);
         return new Date(zdt.epochMilliseconds);
       } catch (e) {
-        // fallback to Date
       }
     }
   } catch (e) {}
@@ -137,10 +135,28 @@ function startCountdown(targetDate, valueEls) {
     valueEls.forEach((el) => (el.textContent = "--"));
     return;
   }
+  
+  const hasTemporal = typeof Temporal !== "undefined" && Temporal.Instant;
+  let targetInstant = null;
+  if (hasTemporal) {
+    try {
+      targetInstant = Temporal.Instant.from(targetDate.toISOString());
+    } catch (e) {
+      targetInstant = null;
+    }
+  }
 
   function update() {
-    const now = new Date();
-    let diff = targetDate - now;
+    let diff;
+
+    if (targetInstant) {
+      const nowInstant = Temporal.Now.instant();
+      diff = targetInstant.epochMilliseconds - nowInstant.epochMilliseconds;
+    } else {
+      const now = new Date();
+      diff = targetDate - now;
+    }
+
     if (diff <= 0) {
       valueEls[0].textContent = "00";
       valueEls[1].textContent = "00";
@@ -149,6 +165,7 @@ function startCountdown(targetDate, valueEls) {
       clearInterval(iv);
       return;
     }
+
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     diff -= days * (1000 * 60 * 60 * 24);
     const hours = Math.floor(diff / (1000 * 60 * 60));
