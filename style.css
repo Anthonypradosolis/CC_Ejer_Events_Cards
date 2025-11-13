@@ -146,3 +146,38 @@ body {
     font-size: 0.7rem;
   }
 }
+
+/* Estilos para diferenciar eventos pasados y futuros */
+.card.event-past {
+  opacity: 0.7;
+  filter: grayscale(60%);
+  border-color: #bdbdbd;
+}
+
+.card.event-past .card-img {
+  filter: grayscale(100%) brightness(0.85);
+}
+
+.card.event-past .category {
+  opacity: 0.8;
+}
+
+.card.event-past .countdown-item {
+  background: #f0f0f0;
+}
+
+.card.event-future {
+  border-color: #28a745;
+  box-shadow: 0 8px 20px rgba(40,167,69,0.06);
+  transform: translateY(0);
+  transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.card.event-future:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(40,167,69,0.12);
+}
+
+.card.event-future .event-date {
+  border-left-color: #28a745;
+}

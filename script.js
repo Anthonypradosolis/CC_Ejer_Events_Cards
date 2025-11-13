@@ -80,8 +80,19 @@ function renderEvents(events) {
 
     container.appendChild(card);
 
-    // iniciar countdown
+    // marcar si el evento es pasado o futuro (para estilos)
     const target = parseDate(ev.dateTime);
+    const now = new Date();
+    if (!(target instanceof Date) || isNaN(target.getTime())) {
+      // fecha inválida: tratar como pasado para evitar destacar
+      card.classList.add("event-past");
+    } else if (target < now) {
+      card.classList.add("event-past");
+    } else {
+      card.classList.add("event-future");
+    }
+
+    // iniciar countdown
     startCountdown(target, valueEls);
   });
 }
